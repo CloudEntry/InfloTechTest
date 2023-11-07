@@ -1,0 +1,33 @@
+@model UserManagement.Web.Models.Users.UserListViewModel
+
+<h2>Add User</h2>
+
+<form method="post" >
+    <fieldset>
+        <legend>Add Customer</legend>
+        <div style="margin-bottom: 10px">
+            <label for="Forename">Forename</label>
+            <input type="text" name="Forename" value="" />
+        </div>
+        <div style="margin-bottom: 10px">
+            <label for="Surname">Surname</label>
+            <input type="text" name="Surname" value="" />
+        </div>
+        <div style="margin-bottom: 10px">
+            <label for="Email">Email</label>
+            <input type="text" name="Email" value="" />
+        </div>
+        <div style="margin-bottom: 10px">
+            <label for="DateofBirth">Date of Birth</label>
+            <input type="date" name="DateofBirth" value="" />
+        </div>
+        <div>
+            <input type="submit" value="Submit" class="submit" />
+        </div>
+    </fieldset>
+</form>
+
+<div>
+    <a asp-controller="Users" asp-action="List" class="btn btn-primary float-end">Back</a>
+</div>
+

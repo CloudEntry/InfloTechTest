@@ -1,4 +1,5 @@
 ﻿using System.Linq;
+using UserManagement.Models;
 using UserManagement.Services.Domain.Interfaces;
 using UserManagement.Web.Models.Users;
 
@@ -9,6 +10,9 @@ public class UsersController : Controller
 {
     private readonly IUserService _userService;
     public UsersController(IUserService userService) => _userService = userService;
+
+    [BindProperty]
+    public User newUser { get; set; } = default!;
 
     [HttpGet("/list")]
     public ViewResult List()
@@ -50,5 +54,19 @@ public class UsersController : Controller
         };
 
         return View(model);
+    }
+
+    [HttpGet("/adduser")]
+    public ViewResult AddUser()
+    {
+        return View();
+    }
+
+    [HttpPost("/adduser")]
+    public ActionResult UserAdded()
+    {
+        newUser.IsActive = true;
+        _userService.Create(newUser);
+        return View();
     }
 }
