@@ -69,4 +69,12 @@ public class UsersController : Controller
         _userService.Create(newUser);
         return View();
     }
+
+    [HttpGet("/user/{userId}")]
+    public ViewResult ViewUser(int userId)
+    {
+        var user = _userService.GetUser(userId).First();
+
+        return View(user);
+    }
 }

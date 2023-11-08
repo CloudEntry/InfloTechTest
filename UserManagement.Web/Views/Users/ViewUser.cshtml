@@ -1,0 +1,16 @@
+@model UserManagement.Models.User
+
+<h2>User Info</h2>
+
+@{
+    <p><b>Id:</b> @Model.Id</p>
+    <p><b>Forename:</b> @Model.Forename</p>
+    <p><b>Surname:</b> @Model.Surname</p>
+    <p><b>Email:</b> @Model.Email</p>
+    <p><b>Account Active:</b> @(Model.IsActive ? "Yes" : "No")</p>
+    <p><b>Date of Birth:</b> @(Model.DateOfBirth.ToString("dd/MM/yyyy"))</p>
+}
+
+<div>
+    <a asp-controller="Users" asp-action="List" class="btn btn-primary float-end">Back</a>
+</div>
