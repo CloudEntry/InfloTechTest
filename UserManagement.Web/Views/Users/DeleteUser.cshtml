@@ -1,0 +1,18 @@
+@model UserManagement.Models.User
+
+<h2>Delete User</h2>
+
+@{
+    <form method="post">
+        <fieldset>
+            <div>
+                <label>Are you sure you wish to delete @Model.Forename @Model.Surname?</label>
+                <input type="submit" value="Delete" class="submit" />
+            </div>
+        </fieldset>
+    </form>
+}
+
+<div>
+    <a asp-controller="Users" asp-action="List" class="btn btn-primary float-end">Back</a>
+</div>

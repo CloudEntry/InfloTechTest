@@ -77,4 +77,21 @@ public class UsersController : Controller
 
         return View(user);
     }
+
+    [HttpGet("/deleteuser/{userId}")]
+    public ViewResult DeleteUser(int userId)
+    {
+        var user = _userService.GetUser(userId).First();
+
+        return View(user);
+    }
+
+    [HttpPost("/deleteuser/{userId}")]
+    public ActionResult UserDeleted(int userId)
+    {
+        var user = _userService.GetUser(userId).First();
+        _userService.Delete(user);
+
+        return View();
+    }
 }
