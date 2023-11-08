@@ -94,4 +94,21 @@ public class UsersController : Controller
 
         return View();
     }
+
+    [HttpGet("/edituser/{userId}")]
+    public ViewResult EditUser(int userId)
+    {
+        var user = _userService.GetUser(userId).First();
+
+        return View(user);
+    }
+
+    [HttpPost("/edituser/{userId}")]
+    public ActionResult UserEdited(int userId)
+    {
+        newUser.Id = userId;
+        _userService.Update(newUser);
+
+        return View();
+    }
 }

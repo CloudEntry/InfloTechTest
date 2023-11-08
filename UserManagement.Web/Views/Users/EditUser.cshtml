@@ -1,0 +1,40 @@
+@model UserManagement.Models.User
+
+<h2>Edit User</h2>
+
+@{
+    <form method="post">
+        <fieldset>
+            <legend>Update Info</legend>
+            <div style="margin-bottom: 10px">
+                <label for="Forename">Forename</label>
+                @Html.EditorFor(x => x.Forename)
+            </div>
+            <div style="margin-bottom: 10px">
+                <label for="Surname">Surname</label>
+                @Html.EditorFor(x => x.Surname)
+            </div>
+            <div style="margin-bottom: 10px">
+                <label for="Email">Email</label>
+                @Html.EditorFor(x => x.Email)
+            </div>
+            <div style="margin-bottom: 10px" class="form-group">
+                <label for="AccountActive">Account Active</label>
+                @Html.EditorFor(x => x.IsActive)
+            </div>
+            <div style="margin-bottom: 10px">
+                <label for="DateofBirth">Date of Birth</label>
+                <input type="date" name="DateofBirth" value=@(Model.DateOfBirth.ToString("yyyy-MM-dd")) />
+            </div>
+            <div>
+                <input type="submit" value="Submit" class="submit" />
+            </div>
+        </fieldset>
+    </form>
+}
+
+
+<div>
+    <a asp-controller="Users" asp-action="List" class="btn btn-primary float-end">Back</a>
+</div>
+
