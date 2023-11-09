@@ -1,4 +1,4 @@
-@model UserManagement.Models.User
+@model UserManagement.Web.Models.Users.UserListItemViewModel
 
 <h2>User Info</h2>
 
@@ -9,6 +9,15 @@
     <p><b>Email:</b> @Model.Email</p>
     <p><b>Account Active:</b> @(Model.IsActive ? "Yes" : "No")</p>
     <p><b>Date of Birth:</b> @(Model.DateOfBirth.ToString("dd/MM/yyyy"))</p>
+}
+
+@if (Model.Logs.Count > 0) {
+    <h4>Logs</h4>
+}
+
+@foreach (var item in Model.Logs)
+{
+    <p><b>@item.TimeStamp</b> @item.Info</p>
 }
 
 <div>
