@@ -1,0 +1,51 @@
+﻿@model UserManagement.Web.Models.Users.LogListViewModel
+
+<h2>Logs List</h2>
+
+<div class="table-responsive">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>User Id</th>
+                <th>Info</th>
+                <th>Timestamp</th>
+                <th style="width: 1px;"></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.Items)
+            {
+                <tr>
+                    <td>
+                        @item.LogId
+                    </td>
+                    <td>
+                        @item.UserId
+                    </td>
+                    <td>
+                        @item.Info
+                    </td>
+                    <td>
+                        @item.TimeStamp
+                    </td>
+                    <td>
+                        <div class="dropdown">
+                            <button type="button" class="btn btn-default dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" id="btnToggleActions">
+                                Actions
+                            </button>
+                            <ul class="dropdown-menu" aria-labelledby="btnToggleActions">
+                            </ul>
+                        </div>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+<div>
+    <div class="btn-group" role="group">
+    </div>
+</div>
+
