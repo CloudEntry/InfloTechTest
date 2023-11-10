@@ -23,6 +23,7 @@ public class LogsController : Controller
             LogId = p.LogId,
             UserId = p.UserId,
             Info = p.Info,
+            Details = p.Details,
             TimeStamp = p.TimeStamp
         });
 
@@ -40,19 +41,22 @@ public class LogsController : Controller
             LogId = x.LogId,
             UserId = x.UserId,
             Info = x.Info,
+            Details = x.Details,
             TimeStamp = x.TimeStamp
         }).First();
 
-        var user = _userService.GetUser((int)logEntry.UserId).Select(x => new UserListItemViewModel{
+        var userList = _userService.GetUser((int)logEntry.UserId).Select(x => new UserListItemViewModel{
             Id = x.Id,
             Forename = x.Forename,
             Surname = x.Surname,
             Email = x.Email,
             IsActive = x.IsActive,
             DateOfBirth = x.DateOfBirth
-        }).First();
+        });
 
-        logEntry.User = user;
+        if (userList.Any()) {
+            logEntry.User = userList.First();
+        }
 
         return View(logEntry);
     }

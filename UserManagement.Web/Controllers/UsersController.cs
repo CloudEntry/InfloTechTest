@@ -69,6 +69,10 @@ public class UsersController : Controller
     {
         newUser.IsActive = true;
         _userService.Create(newUser);
+
+        var logEntry = new Log(newUser.Id, $"User {newUser.Forename} {newUser.Surname} [Id: {newUser.Id}] created", DateTime.Now);
+        _userService.CreateLogEntry(logEntry);
+
         return View();
     }
 
@@ -88,6 +92,7 @@ public class UsersController : Controller
             LogId = x.LogId,
             UserId = x.UserId,
             Info = x.Info,
+            Details = x.Details,
             TimeStamp = x.TimeStamp
         });
 
@@ -110,6 +115,9 @@ public class UsersController : Controller
         var user = _userService.GetUser(userId).First();
         _userService.Delete(user);
 
+        var logEntry = new Log(userId, $"User {user.Forename} {user.Surname} [Id: {userId}] deleted", DateTime.Now);
+        _userService.CreateLogEntry(logEntry);
+
         return View();
     }
 
@@ -124,7 +132,7 @@ public class UsersController : Controller
     [HttpPost("/edituser/{userId}")]
     public ActionResult UserEdited(int userId)
     {
-        var logEntry = new Log(userId, BuildLogEntry(userId), DateTime.Now);
+        var logEntry = new Log(userId, $"User {newUser.Forename} {newUser.Surname} [Id: {userId}] updated", BuildLogEntryDetails(userId), DateTime.Now);
         _userService.CreateLogEntry(logEntry);
 
         newUser.Id = userId;
@@ -133,7 +141,7 @@ public class UsersController : Controller
         return View();
     }
 
-    private string BuildLogEntry(int userId) {
+    private string BuildLogEntryDetails(int userId) {
         var log = new StringBuilder();
 
         var oldUser = _userService.GetUser(userId).First();

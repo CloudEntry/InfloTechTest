@@ -4,9 +4,22 @@
 
 @{
     <p><b>Id:</b> @Model.LogId</p>
-    <p><b>UserId:</b> @Model.UserId [@Model.User.Forename @Model.User.Surname - @Model.User.Email]</p>
+    <p><b>UserId:</b> @Model.UserId</p>
     <p><b>Info:</b> @Model.Info</p>
-    <p><b>Timestamp:</b> @(Model.TimeStamp.ToString("dd/MM/yyyy"))</p>
+    <p><b>Timestamp:</b> @(Model.TimeStamp)</p>
+}
+
+@if (Model.User != null){
+    <h4>User:</h4>
+    <p><b>Forename:</b> @Model.User.Forename</p>
+    <p><b>Surname:</b> @Model.User.Surname</p>
+    <p><b>Email:</b> @Model.User.Email</p>
+    <p><b>Date Of Birth:</b> @(Model.User.DateOfBirth.ToString("dd/MM/yyyy"))</p>
+}
+
+@if (Model.Details != null) {
+    <h4>Details:</h4>
+    <p>@Model.Details</p>
 }
 
 <div>
