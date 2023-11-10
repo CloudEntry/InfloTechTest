@@ -60,4 +60,24 @@ public class LogsController : Controller
 
         return View(logEntry);
     }
+
+    [HttpGet("/filterlogs/{criteria}")]
+    public ViewResult FilterLogs(string criteria)
+    {
+        var items = _logService.FilterLogs(criteria).Select(p => new LogListItemViewModel
+        {
+            LogId = p.LogId,
+            UserId = p.UserId,
+            Info = p.Info,
+            Details = p.Details,
+            TimeStamp = p.TimeStamp
+        });
+
+        var model = new LogListViewModel
+        {
+            Items = items.ToList()
+        };
+
+        return View(model);
+    }
 }

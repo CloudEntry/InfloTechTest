@@ -20,4 +20,6 @@ public class LogService : ILogService
 
     public void Delete(Log log) => _dataAccess.Delete(log);
     public void Update(Log log) => _dataAccess.Update(log);
+
+    public IEnumerable<Log> FilterLogs(string criteria) => _dataAccess.GetAll<Log>().Where(u => u.Info.Contains(criteria));
 }

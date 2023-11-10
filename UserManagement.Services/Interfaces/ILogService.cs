@@ -11,4 +11,5 @@ public interface ILogService
     void Create(Log log);
     void Delete(Log log);
     void Update(Log log);
+    IEnumerable<Log> FilterLogs(string criteria);
 }
