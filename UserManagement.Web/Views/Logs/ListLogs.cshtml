@@ -30,13 +30,7 @@
                         @item.TimeStamp
                     </td>
                     <td>
-                        <div class="dropdown">
-                            <button type="button" class="btn btn-default dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" id="btnToggleActions">
-                                Actions
-                            </button>
-                            <ul class="dropdown-menu" aria-labelledby="btnToggleActions">
-                            </ul>
-                        </div>
+                        <a asp-controller="Logs" asp-action="ViewLog" asp-route-logId=@item.LogId>View More</a>
                     </td>
                 </tr>
             }

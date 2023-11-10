@@ -1,0 +1,14 @@
+@model UserManagement.Web.Models.Users.LogListItemViewModel
+
+<h2>Log Info</h2>
+
+@{
+    <p><b>Id:</b> @Model.LogId</p>
+    <p><b>UserId:</b> @Model.UserId [@Model.User.Forename @Model.User.Surname - @Model.User.Email]</p>
+    <p><b>Info:</b> @Model.Info</p>
+    <p><b>Timestamp:</b> @(Model.TimeStamp.ToString("dd/MM/yyyy"))</p>
+}
+
+<div>
+    <a asp-controller="Logs" asp-action="ListLogs" class="btn btn-primary float-end">Back</a>
+</div>
